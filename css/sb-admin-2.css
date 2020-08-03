@@ -10632,7 +10632,7 @@ a:focus {
 }
 
 .sidebar-dark .nav-item .nav-link {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .sidebar-dark .nav-item .nav-link i {
@@ -10803,7 +10803,7 @@ a:focus {
 }
 
 .bg-login-image {
-  background: url("https://source.unsplash.com/K4mSJ7kc0As/600x800");
+  background: url("https://i.ibb.co/KhsnYL7/login-Logo.png");
   background-position: center;
   background-size: cover;
 }
