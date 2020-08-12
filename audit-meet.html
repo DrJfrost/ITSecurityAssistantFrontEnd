@@ -375,7 +375,7 @@
 		</div>
 		
 		<div class="form-group">
-			<label for="exampleFormControlTextarea1">Descripcion (incluir informacion del sistema)</label>
+			<label for="exampleFormControlTextarea1">Descripcion (Motivos de auditoria)</label>
 			<textarea class="form-control" id="meetdescription" rows="3"></textarea>
 		</div>
 		
@@ -384,7 +384,52 @@
 			<label class="form-check-label" for="exampleCheck1">Acepto los terminos y condiciones</label>
 		</div>
 		
-		
+    
+    <h1 class="h3 mb-4 text-gray-800">Caracterizacion del sistema</h1>
+
+    <div class="form-group">
+      <input type="sname" class="form-control form-control-user" id="systemname" placeholder="Nombre del sistema">
+    </div>
+
+    <div class="form-group">
+			<label for="exampleFormControlTextarea1">Descripcion (Especificacion del sistema)</label>
+			<textarea class="form-control" id="systemdescription" rows="3"></textarea>
+    </div>
+
+    <h1 class="h3 mb-4 text-gray-800">Sistema operativo del sistema</h1>
+    
+    <select class="form-control" id="osselect">
+      <option value=1>Windows</option>
+      <option value=2>Linux</option>
+      <option value=3>Android OS</option>
+      <option value=4>IOS</option>
+      <option value=5>OSX</option>
+      <option value=6>Arduino</option>
+  
+     </select>
+
+     <h1 class="h3 mb-4 text-gray-800">Plataforma del sistema</h1>
+
+     <select class="form-control" id="systemtselect">
+      <option value=1>Mobile</option>
+      <option value=2>Desktop</option>
+      <option value=3>Hybrid</option>
+      <option value=4>IoT</option>
+    
+  
+     </select>
+
+
+
+
+
+
+
+
+
+
+
+
 </form>
 
 		<button class="btn btn-primary" onclick="createmeet()">Enviar</button>
