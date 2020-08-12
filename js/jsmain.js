@@ -371,10 +371,15 @@
 	}
 
 	function setData(){
+		loaddataemployes();
 		var meeting = getUrlParameter("meeting_id");
 		var customer = getUrlParameter("customer_id");
-		$('#meeting').val(meeting);
-		getMeetingInfo(customer, meeting);
+		if (meeting != null & customer != null){
+			$('#meeting').val(meeting);
+			getMeetingInfo(customer, meeting);
+		}else{
+			window.location.href = "analystdashboard.html"
+		}
 	}
 
 	function getMeetingInfo(customerId, meetingId){
@@ -393,9 +398,7 @@
 		})
 		
 		.then(function (response) {
-		
-		console.log(response);
-		$('#auditor').val(response.auditor);
+		$('#auditor').val(response.data.auditor);
 		
 		var getmeeturl= 'http://itsecurityassistantapi-dev.us-east-1.elasticbeanstalk.com/api/Customers/'+customerId+'/Systems/';
 		
@@ -404,7 +407,12 @@
 				'Authorization': sendtoken
 			}
 		}).then((response)=>{
-			console.log(response);
+			for (i in response.data){
+				var o = new Option(response.data[i].name, response.data[i].id);
+				/// jquerify the DOM object 'o' so we can use the html method
+				$(o).html(response.data[i].name);
+				$("#system").append(o);
+			}
 
 		}).catch((error) =>{
 			console.log(error);
@@ -438,13 +446,8 @@
 
 function createReport(){
 		
-		console.log(useractualid);
-		console.log(actualuserid);
 		
 		var urlstringmeet= 'http://itsecurityassistantapi-dev.us-east-1.elasticbeanstalk.com/api/Analysts/'+useractualid+'/Reports/';
-		
-		console.log(urlstringmeet);
-		console.log(useractualid);
 		
 		var sendtoken= 'Bearer '+window.localStorage.getItem('accesstoken');
 	
@@ -464,32 +467,31 @@ function createReport(){
 			"diagnostic": document.getElementById('diagnostic').value,
 			"solution": document.getElementById('solution').value,
 			"cve_codes": document.getElementById('cve_codes').value,
-			"analyst": parseInt(useractualid, 10), 
+			"analyst": parseInt(useractualid, 10),
+			"auditor": document.getElementById('auditor').value, 
 			"state": document.getElementById('state').value,
 			"attacks": attacks_values,
-			"meeting": document.getElementsById('meeting').value,
-
+			"meeting": document.getElementById('meeting').value,
+			"system": document.getElementById('system').value,
 		};
 
 		console.log(payload);
 		
-		// axios.post(urlstringmeet, payload,{
-		// 	headers: {
-		// 		'Authorization': sendtoken,			
-		// 	}
-		// })
+		axios.post(urlstringmeet, payload,{
+			headers: {
+				'Authorization': sendtoken,			
+			}
+		})
 		
-		// .then(function (response) {
-		//	$('#okmeet').modal('show')
-		// console.log(response);
+		.then(function (response) {
+			$('#okmeet').modal('show')
+		console.log(response);
+		})
 	
-	
-		// })
-	
-		// .catch(function (error) {
-		// console.log(error);
+		.catch(function (error) {
+		console.log(error.response.data);
 
-		// });
+		});
 	
 		
 		

@@ -410,17 +410,25 @@
 
       </div>
       <br/>
-      <label>Estado</label>
-      <select class="form-control col-3" id="state" name="state">
-        <option value=1 selected>Pago Pendiente</option>
-        <option value=2>Pago Completado</option>
-        <option value=3>Procesando</option>
-        <option value=4>Cancelado</option>
-        <option value=5>Completado</option>
-      </select>
+      <div class="row col-9">
+        <div class="col-6">
+          <label>Estado</label>
+          <select class="form-control col-10" id="state" name="state">
+            <option value=1>Pago Pendiente</option>
+            <option value=2>Pago Completado</option>
+            <option value=3>Procesando</option>
+            <option value=4>Cancelado</option>
+            <option value=5 selected>Completado</option>
+          </select>
+        </div>
+        <div class="col-6">
+          <label>Systema</label>
+          <select class="form-control col-10" id="system" name="state">
+          </select>
+        </div>
+      </div>
       <input type="hidden" id="meeting" name="report" value=""/>
       <input type="hidden" id="auditor" name="report" value=""/>
-      <input type="hidden" id="system" name="report" value=""/>
       <br/>
     </div>
 
