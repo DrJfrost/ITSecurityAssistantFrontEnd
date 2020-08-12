@@ -77,7 +77,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Gestion de Citas:</h6>
-            <a class="collapse-item" href="audit-meet.html">Solicitar Auditoria</a>
+            <a class="collapse-item" href="#">Solicitar Auditoria</a>
             <a class="collapse-item" href="cards.html">Solicitar Cotizacion</a>
           </div>
         </div>
@@ -102,8 +102,30 @@
       <!-- Divider -->
       <hr class="sidebar-divider">
 
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Addons
+      </div>
 
-   
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item active">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Pages</span>
+        </a>
+        <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Login Screens:</h6>
+            <a class="collapse-item" href="login.html">Login</a>
+            <a class="collapse-item" href="register.html">Register</a>
+            <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+            <div class="collapse-divider"></div>
+            <h6 class="collapse-header">Other Pages:</h6>
+            <a class="collapse-item" href="404.html">404 Page</a>
+            <a class="collapse-item active" href="blank.html">Blank Page</a>
+          </div>
+        </div>
+      </li>
 
       <!-- Nav Item - Charts -->
       <li class="nav-item">
@@ -321,74 +343,94 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Registro de empleados</h1>
+          <h1 class="h3 mb-4 text-gray-800">Creacion de reporte</h1>
 
         </div>
 		
-		<div class="containertest">
-		<h4 class="page-header">Seleccione el tipo de empleado</h4>
+		
+		<div class="datecalendar">
+		
+
+    <div class="form-group">
+      <label for="report">Precio del Reporte:</label>
+      <input class="form-control col-9" type="number" id="price" name="report"/>
+      <br/>
+      <label for="exampleFormControlTextarea1">Diagnostico</label>
+      <textarea class="form-control col-9" id="diagnostic" rows="3"></textarea>
+      <br/>
+      <label>Solución</label>
+      <textarea class="form-control col-9" id="solution" rows="3"></textarea>
+      <br/>
+      <label>Codigos CVE</label>
+      <textarea class="form-control col-9" id="cve_codes" rows="3"></textarea>
+      <br/>
+      <label>Ataques</label>
+      <div class="row col-9">
+        <div class="col-3 form-group form-check">
+          <input type="checkbox" class="form-check-input attacks" id="man-in-the-middle" value=1 name="attacks">
+          <label class="form-check-label" for="exampleCheck1">Man In the Middle</label>
+        </div>
+        <div class="col-3 form-group form-check">
+          <input type="checkbox" class="form-check-input attacks" id="sqli" value=2 name="attacks">
+          <label class="form-check-label" for="exampleCheck1">SQL Injection</label>
+        </div>
+        <div class="col-3 form-group form-check">
+          <input type="checkbox" class="form-check-input attacks" id="ddos" value=3 name="attacks">
+          <label class="form-check-label" for="exampleCheck1">DDoS Attack</label>
+        </div>
+        <div class="col-3 form-group form-check">
+          <input type="checkbox" class="form-check-input attacks" id="phishing" value=4 name="attacks">
+          <label class="form-check-label" for="exampleCheck1">Phishing</label>
+        </div>
+        <div class="col-3 form-group form-check">
+          <input type="checkbox" class="form-check-input attacks" id="rfi" value=5 name="attacks">
+          <label class="form-check-label" for="exampleCheck1">RFI Remote File Inclusion</label>
+        </div>
+        <div class="col-3 form-group form-check">
+          <input type="checkbox" class="form-check-input attacks" id="xss" value=6 name="attacks">
+          <label class="form-check-label" for="exampleCheck1">XSS Cross Site Scripting</label>
+        </div>
+        <div class="col-3 form-group form-check">
+          <input type="checkbox" class="form-check-input attacks" id="brute-force" value=7 name="attacks">
+          <label class="form-check-label" for="exampleCheck1">Brute Force</label>
+        </div>
+        <div class="col-3 form-group form-check">
+          <input type="checkbox" class="form-check-input attacks" id="ransomware" value=8 name="attacks">
+          <label class="form-check-label" for="exampleCheck1">Ransomware</label>
+        </div>
+        <div class="col-3 form-group form-check">
+          <input type="checkbox" class="form-check-input attacks" id="sniffing" value=9 name="attacks">
+          <label class="form-check-label" for="exampleCheck1">Sniffing</label>
+        </div>
+        <div class="col-3 form-group form-check">
+          <input type="checkbox" class="form-check-input attacks" id="session-hijacking" value=10 name="attacks">
+          <label class="form-check-label" for="exampleCheck1">Session Hijacking</label>
+        </div>
+
+
+      </div>
+      <br/>
+      <label>Estado</label>
+      <select class="form-control col-3" id="state" name="state">
+        <option value=1 selected>Pago Pendiente</option>
+        <option value=2>Pago Completado</option>
+        <option value=3>Procesando</option>
+        <option value=4>Cancelado</option>
+        <option value=5>Completado</option>
+      </select>
+      <br/>
+    </div>
+
+    <button class="btn btn-primary" onclick="createReport()">Enviar</button>
 	
-	
-		<select class="form-control">
-        <option value='auditor'>Auditor</option>
-        <option value='analista'>Analista</option>
-    
-		</select>
-	
+
+
+		
+		
 		</div>
-		<br />
-		
-		<div class="form-group">
-            <input type="name" class="form-control form-control-user" id="employername" placeholder="Nombre del empleado">
-        </div>
-		
-		<div class="form-group">
-            <input type="lastname" class="form-control form-control-user" id="employerlastname" placeholder="Apellido del empleado">
-        </div>
-		
-		<div class="form-group">
-            <input type="username" class="form-control form-control-user" id="employerusername" placeholder="Nombre de usuario">
-        </div>
-		
-		<div class="pass">
-            <input type="password" class="form-control form-control-user" id="employerpass" placeholder="Contraseña">
-        </div>
-		
-		<div class="phone">
-            <input type="phone" class="form-control form-control-user" id="employerpass" placeholder="Contraseña">
-        </div>
-		
-		
-		
-	
-	
 		
 		
 		<br> </br>
-		
-		<div class="dateform">
-		
-		<form>
-		
-		<div class="form-group">
-			
-			<small id="emailHelp" class="form-text text-muted">Nunca compartimos tus datos con nadie mas.</small>
-		</div>
-		
-		<div class="form-group">
-			<label for="exampleFormControlTextarea1">Descripcion (incluir informacion del sistema)</label>
-			<textarea class="form-control" id="meetdescription" rows="3"></textarea>
-		</div>
-		
-		<div class="form-group form-check">
-			<input type="checkbox" class="form-check-input" id="exampleCheck1">
-			<label class="form-check-label" for="exampleCheck1">Acepto los terminos y condiciones</label>
-		</div>
-		
-		
-</form>
-
-		<button class="btn btn-primary" onclick="createmeet()">Enviar</button>
 		
 		
 		 <div class="modal" tabindex="-1" role="dialog" id="okmeet">
@@ -404,7 +446,7 @@
         <p>Su auditoria fue creada</p>
       </div>
       <div class="modal-footer" id="testtext">
-        <a class="btn btn-primary btn-user btn-block" data-dismiss="modal" id="cerrartext">
+        <a class="btn btn-primary btn-user btn-block text-white" data-dismiss="modal" id="cerrartext">
                   cerrar
                 </a>
       </div>
