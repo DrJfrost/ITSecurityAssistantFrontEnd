@@ -479,6 +479,10 @@
 			  		</div>');
 				report.attacks[i].name;
 			}
+
+			$('#state').text(report.state.name);
+			$('#system_name').text(report.system.name);
+			$('#system_desc').text(report.system.description);
 		})
 		
 		.catch(function (error) {
