@@ -9,6 +9,23 @@
 		idtype=id;
 	}
 	
+
+	var getUrlParameter = function getUrlParameter(sParam) {
+		var sPageURL = window.location.search.substring(1),
+			sURLVariables = sPageURL.split('&'),
+			sParameterName,
+			i;
+	
+		for (i = 0; i < sURLVariables.length; i++) {
+			sParameterName = sURLVariables[i].split('=');
+	
+			if (sParameterName[0] === sParam) {
+				return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+			}
+		}
+	};	
+
+	
 	
 	function postnewuser3(){
 	
@@ -352,6 +369,64 @@
 		}
 		
 	}
+
+	function setData(){
+		var meeting = getUrlParameter("meeting_id");
+		var customer = getUrlParameter("customer_id");
+		$('#meeting').val(meeting);
+		getMeetingInfo(customer, meeting);
+	}
+
+	function getMeetingInfo(customerId, meetingId){
+		
+		var globalresponse=null;
+		
+		var getmeeturl= 'http://itsecurityassistantapi-dev.us-east-1.elasticbeanstalk.com/api/Customers/'+customerId+'/Meetings/'+meetingId+'/';
+		
+		
+		var sendtoken='Bearer '+window.localStorage.getItem('accesstoken') ;
+		
+		axios.get(getmeeturl, {
+			headers: {
+				'Authorization': sendtoken
+			}
+		})
+		
+		.then(function (response) {
+		
+		console.log(response);
+		$('#auditor').val(response.auditor);
+		
+		var getmeeturl= 'http://itsecurityassistantapi-dev.us-east-1.elasticbeanstalk.com/api/Customers/'+customerId+'/Systems/';
+		
+		axios.get(getmeeturl, {
+			headers: {
+				'Authorization': sendtoken
+			}
+		}).then((response)=>{
+			console.log(response);
+
+		}).catch((error) =>{
+			console.log(error);
+		});
+	
+		
+		})
+		
+		.catch(function (error) {
+		console.log(error);
+		});
+		
+		
+		
+		
+	
+		var table = document.getElementById("tablemeets");
+		
+		var size=window.localStorage.getItem('datasize');
+		
+		
+	}
 	
 	function usermeetstart(){
 		
@@ -391,7 +466,9 @@ function createReport(){
 			"cve_codes": document.getElementById('cve_codes').value,
 			"analyst": parseInt(useractualid, 10), 
 			"state": document.getElementById('state').value,
-			"attacks": attacks_values
+			"attacks": attacks_values,
+			"meeting": document.getElementsById('meeting').value,
+
 		};
 
 		console.log(payload);
@@ -822,7 +899,7 @@ function createReport(){
 				
 				
 				var cellInstruction = row.insertCell(9);
-				cellInstruction.innerHTML = '<button class="btn btn-primary btn-xs my-xs-btn" type="button" onClick="Auditar('+responsedata3.data[i].id+')" >'
+				cellInstruction.innerHTML = '<button class="btn btn-primary btn-xs my-xs-btn" type="button" onClick="window.location.href = \'analyst-report-create.html?meeting_id='+responsedata3.data[i].id+'&customer_id='+responsedata3.data[i].customer+'\'" >'
 				+ '<span class="glyphicon glyphicon-pencil"></span>Hacer reporte</button>';
 			
 			
@@ -838,6 +915,39 @@ function createReport(){
 		
 		}
 		
+	}
+
+
+	function CreateReport(meetingid){
+
+		var saver=meetingid;
+		
+		var sendtoken='Bearer '+window.localStorage.getItem('accesstoken') ;
+
+		var auditurl='http://itsecurityassistantapi-dev.us-east-1.elasticbeanstalk.com/api/PendingMeetings/'+meetingid+'/';
+
+		var payload = {"auditor": actualuserid, "state": 4};
+
+		axios.patch(auditurl, payload,{
+			headers: {
+
+			'Authorization': sendtoken,
+			
+		}
+		})
+		
+		.then(function (response) {
+		console.log(response);
+	
+	
+		})
+	
+		.catch(function (error) {
+		console.log(error);
+
+		});
+
+
 	}
 
 
