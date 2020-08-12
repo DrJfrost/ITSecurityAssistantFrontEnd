@@ -388,7 +388,7 @@
 				cell4.innerHTML = responsedata.data[i].description;
 				cell5.innerHTML = responsedata.data[i].state.name;
 				
-				cellInstruction.innerHTML = '<button class="btn btn-primary btn-xs my-xs-btn" type="button" onClick="changeRec(".$num.")" >'
+				cellInstruction.innerHTML = '<button class="btn btn-primary btn-xs my-xs-btn" type="button" onClick="" >'
    				 + '<span class="glyphicon glyphicon-pencil"></span> Edit</button>';
 				
 				}
@@ -862,6 +862,7 @@ function createReport(){
 	
 		.catch(function (error) {
 		console.log(error);
+		console.log(error.response.data);
 
 		});
 
