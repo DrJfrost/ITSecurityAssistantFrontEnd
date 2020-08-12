@@ -16,11 +16,20 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="css/sb-admin-2.css" rel="stylesheet">
+  
+  
+  <script src="jwt-decode.min.js"></script>
+  
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  
+  <script language="JavaScript" type="text/javascript" src="js/jsmain.js"></script>
+  
+  
 
 </head>
 
-<body id="page-top">
+<body id="page-top" onload="javascript:loaddata()">
 
   <!-- Page Wrapper -->
   <div id="wrapper">
@@ -63,7 +72,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Gestion de Citas:</h6>
-            <a class="collapse-item" href="buttons.html">Solicitar Auditoria</a>
+            <a class="collapse-item" href="audit-meet.html">Solicitar Auditoria</a>
             <a class="collapse-item" href="cards.html">Solicitar Cotizacion</a>
           </div>
         </div>
@@ -300,8 +309,8 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="visualusername" >Valerie Luna</span>
+                <img class="img-profile rounded-circle" id="profilepic" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
