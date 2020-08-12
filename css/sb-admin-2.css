@@ -10937,6 +10937,21 @@ form.user .btn-user {
   width: 12.5rem;
 }
 
+.jobselect {
+	padding-right: 1.95rem;
+	padding-left: 1.95rem;
+}
+
+.testg {
+  width: 100%;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  margin-right: auto;
+  margin-left: 0.6rem;
+}
+
+
+
 @-webkit-keyframes noise-anim {
   0% {
     clip: rect(78px, 9999px, 4px, 0);

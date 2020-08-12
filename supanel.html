@@ -102,30 +102,8 @@
       <!-- Divider -->
       <hr class="sidebar-divider">
 
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Addons
-      </div>
 
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item active">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
-        </a>
-        <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Login Screens:</h6>
-            <a class="collapse-item" href="login.html">Login</a>
-            <a class="collapse-item" href="register.html">Register</a>
-            <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Other Pages:</h6>
-            <a class="collapse-item" href="404.html">404 Page</a>
-            <a class="collapse-item active" href="blank.html">Blank Page</a>
-          </div>
-        </div>
-      </li>
+   
 
       <!-- Nav Item - Charts -->
       <li class="nav-item">
@@ -343,23 +321,47 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Solicitud de auditoria</h1>
+          <h1 class="h3 mb-4 text-gray-800">Registro de empleados</h1>
 
         </div>
 		
-		
-		<div class="datecalendar">
-		
-		
-		<form action="/action_page.php">
-		<label for="birthdaytime">Seleccione la fecha:</label>
-		<input type="datetime-local" id="meetdate" name="birthdaytime">
+		<div class="containertest">
+		<h4 class="page-header">Seleccione el tipo de empleado</h4>
 	
-		</form>
-
-		
-		
+	
+		<select class="form-control">
+        <option value='auditor'>Auditor</option>
+        <option value='analista'>Analista</option>
+    
+		</select>
+	
 		</div>
+		<br />
+		
+		<div class="form-group">
+            <input type="name" class="form-control form-control-user" id="employername" placeholder="Nombre del empleado">
+        </div>
+		
+		<div class="form-group">
+            <input type="lastname" class="form-control form-control-user" id="employerlastname" placeholder="Apellido del empleado">
+        </div>
+		
+		<div class="form-group">
+            <input type="username" class="form-control form-control-user" id="employerusername" placeholder="Nombre de usuario">
+        </div>
+		
+		<div class="pass">
+            <input type="password" class="form-control form-control-user" id="employerpass" placeholder="Contraseña">
+        </div>
+		
+		<div class="phone">
+            <input type="phone" class="form-control form-control-user" id="employerpass" placeholder="Contraseña">
+        </div>
+		
+		
+		
+	
+	
 		
 		
 		<br> </br>
@@ -369,7 +371,6 @@
 		<form>
 		
 		<div class="form-group">
-			
 			
 			<small id="emailHelp" class="form-text text-muted">Nunca compartimos tus datos con nadie mas.</small>
 		</div>
