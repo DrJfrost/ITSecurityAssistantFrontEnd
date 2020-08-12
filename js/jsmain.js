@@ -222,17 +222,58 @@
 		
 		var meetdate=document.getElementById('meetdate').value;
 		
-		
-		meetdate=meetdate+':00';
-		
 	
-		$('#okmeet').modal('show')
+		
 		
 		var payload = {"price": '50000', "date": meetdate, "description": document.getElementById('meetdescription').value, "customer": parseInt(useractualid,10), "meeting_type" : '1', "meeting_class" : '1'};
 
+		console.log(payload);
 		
-		
+		console.log(sendtoken);
+
 		axios.post(urlstringmeet, payload,{
+			headers: {
+
+			'Authorization': sendtoken,
+			
+		}
+		})
+		
+		.then(function (response) {
+		console.log(response);
+		$('#okmeet').modal('show')
+		systemload();
+	
+		})
+	
+		.catch(function (error) {
+		
+		console.log(error.response);
+
+		});
+	
+	}
+
+
+	function systemload(){
+
+		var sendtoken='Bearer '+window.localStorage.getItem('accesstoken') ;
+
+		var systemurl= 'http://itsecurityassistantapi-dev.us-east-1.elasticbeanstalk.com/api/Customers/'+useractualid+'/Systems/';
+
+		console.log(window.localStorage.getItem('accesstoken'));
+
+		console.log(systemurl);
+	
+		
+		console.log(document.getElementById('osselect').value);
+		console.log(document.getElementById('systemtselect').value);
+
+		var systemload = {"name": document.getElementById('systemname').value, "description": document.getElementById('systemdescription').value, "OS": document.getElementById('osselect').value, "customer": parseInt(useractualid,10), "system_type" : document.getElementById('systemtselect').value};
+
+		
+		
+		axios.post(systemurl, systemload,{
 			headers: {
 
 			'Authorization': sendtoken,
@@ -248,14 +289,18 @@
 	
 		.catch(function (error) {
 		console.log(error);
+		console.log(error.response);
 
 		});
-	
-		
-		
-		
-		
+
+
+
 	}
+
+
+
+
+
 	
 	function gettoken(){
 		console.log(window.localStorage.getItem('accesstoken'))
