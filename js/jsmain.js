@@ -308,6 +308,28 @@
 	
 	
 	
+
+
+
+	function getreport(){
+
+	
+
+
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
 	function getmeets(){
 		
 
@@ -364,6 +386,8 @@
 		
 		
 		for (var i = 0; i < size; i++) {
+
+				console.log(responsedata.data[i]);
 				
 				console.log('hola')
 	
@@ -374,8 +398,8 @@
 				var cell3 = row.insertCell(2);
 				var cell4 = row.insertCell(3);
 				var cell5 = row.insertCell(4);
-				var cell6 = row.insertCell(5);
-				var cellInstruction = row.insertCell(6);
+			
+				var cellInstruction = row.insertCell(5);
 
 
 				var comparator=responsedata.data[i].state.name.localeCompare('Finished');
@@ -388,8 +412,8 @@
 				cell4.innerHTML = responsedata.data[i].description;
 				cell5.innerHTML = responsedata.data[i].state.name;
 				
-				cellInstruction.innerHTML = '<button class="btn btn-primary btn-xs my-xs-btn" type="button" onClick="" >'
-   				 + '<span class="glyphicon glyphicon-pencil"></span> Edit</button>';
+				cellInstruction.innerHTML = '<button class="btn btn-primary btn-xs my-xs-btn" type="button" onClick="windows.location.href=\'report.html?meeting_id='+responsedata.data[i].id+'\'&report_id" >'
+   				 + '<span class="glyphicon glyphicon-pencil"></span> Ver reporte</button>';
 				
 				}
 
