@@ -10950,6 +10950,14 @@ form.user .btn-user {
   margin-left: 0.6rem;
 }
 
+.btn btn-primary a {
+	padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  margin-right: auto;
+  margin-left: 0.6rem;
+	
+}
+
 
 
 @-webkit-keyframes noise-anim {
