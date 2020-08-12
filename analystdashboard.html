@@ -31,9 +31,7 @@
 
 </head>
 
-<body id="page-top" onload="javascript:loaddata()">
-
-
+<body id="page-top" onload="javascript:analyststart()">
 
 
   <!-- Page Wrapper -->
@@ -102,8 +100,30 @@
       <!-- Divider -->
       <hr class="sidebar-divider">
 
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Addons
+      </div>
 
-   
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item active">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Pages</span>
+        </a>
+        <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Login Screens:</h6>
+            <a class="collapse-item" href="login.html">Login</a>
+            <a class="collapse-item" href="register.html">Register</a>
+            <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+            <div class="collapse-divider"></div>
+            <h6 class="collapse-header">Other Pages:</h6>
+            <a class="collapse-item" href="404.html">404 Page</a>
+            <a class="collapse-item active" href="blank.html">Blank Page</a>
+          </div>
+        </div>
+      </li>
 
       <!-- Nav Item - Charts -->
       <li class="nav-item">
@@ -287,8 +307,8 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="visualusername">Valerie Luna</span>
-                <img class="img-profile rounded-circle" id="profilepic" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="visualemployename">Valerie Luna</span>
+                <img class="img-profile rounded-circle" id="employerprofilepic" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -321,76 +341,61 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Registro de empleados</h1>
+          <h1 class="h3 mb-4 text-gray-800">Gestion de reportes</h1>
 
         </div>
 		
-		<div class="containertest">
-		<h4 class="page-header">Seleccione el tipo de empleado</h4>
-	
-	
-		<select class="form-control" id="jobselect">
-        <option value=3>Auditor</option>
-        <option value=2>Analista</option>
-    
-		</select>
-	
-		</div>
-		<br />
-		
-		<div class="form-group">
-            <input type="name" class="form-control form-control-user" id="employername" placeholder="Nombre del empleado">
-        </div>
-		
-		<div class="form-group">
-            <input type="lastname" class="form-control form-control-user" id="employerlastname" placeholder="Apellido del empleado">
-        </div>
-		
-		<div class="form-group">
-            <input type="username" class="form-control form-control-user" id="employerusername" placeholder="Nombre de usuario">
-        </div>
-		
-		<div class="pass">
-            <input type="password" class="form-control form-control-user" id="employerpass" placeholder="Contraseña">
-        </div>
-		
-		<br>
-	
-		<div class="form-group">
-            <input type="id" class="form-control form-control-user" id="employerid" placeholder="Identificacion">
-        </div>
-	
-		
-		<div class="form-group">
-            <input type="phone" class="form-control form-control-user" id="employerphone" placeholder="Telefono">
-        </div>
-		
-		<div class="form-group">
-            <input type="phone" class="form-control form-control-user" id="employermail" placeholder="Email">
-        </div>
-		
-		
-		<div class="custom-file">
-          <input type="file" class="custom-file-input" id="employerimageprofile">
-          <label class="custom-file-label" for="customFile">Elija su imagen de perfil</label>
-        </div>
-		
-		
-		
-		
-		
-		
-		
-	
 	
 		
 		
 		<br> </br>
 		
-	
+		<div class="dateform">
 		
+		<!--Table-->
+<table id="auditortable" class="table">
+<!--Table head-->
+  <thead>
+    <tr>
+ 
+      <th>Auditor</th>
+      <th>Id cliente</th>
+      <th>Fecha</th>
+      <th>Descripcion</th>
+	  <th>Id reunion</th>
+	  <th>Tipo de reunion</th>
+	  <th>Clase de reunion</th>
+	  <th>Precio</th>
+	  <th>Estado</th>
+	  <th>Auditar</th>
+ 
+    </tr>
+  </thead>
+  <!--Table head-->
+  <!--Table body-->
+  <tbody>
+   
+    <tr>
+      
+	  <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+ 
+    </tr>
+    
+   
+	
 
-		<button class="btn btn-primary a" onclick="createemployer()">Enviar</button>
+	
+  </tbody>
+  <!--Table body-->
+</table>
+<!--Table-->
+		
+		<button type="button" onclick="gettoken()" >
+          token
+        </button>
 		
 		
 		 <div class="modal" tabindex="-1" role="dialog" id="okmeet">
