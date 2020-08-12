@@ -529,9 +529,28 @@ function createReport(){
 		})
 		
 		.then(function (response) {
-			$('#okmeet').modal('show')
-		console.log(response);
-		})
+			console.log(response);
+
+			var urlupdte= 'http://itsecurityassistantapi-dev.us-east-1.elasticbeanstalk.com/api/PendingAnalisis/'+payload.meeting+'/';
+
+			var payload2 = {
+				"state": 5,
+			};
+
+			axios.patch(urlupdte, payload2,{
+
+				headers: {
+					'Authorization': sendtoken,			
+				}
+			}).then((response2) =>{
+				console.log(response2);
+				$('#okmeet').modal('show')
+			}).catch(function (error) {
+				console.log(error.response.data);
+		
+				});
+			
+			})
 	
 		.catch(function (error) {
 		console.log(error.response.data);
