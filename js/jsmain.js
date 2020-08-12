@@ -560,6 +560,8 @@ function createReport(){
 	
 	
 	function createemployer(){
+
+	
 		
 		var today = new Date();
 		var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
@@ -611,13 +613,17 @@ function createReport(){
 		
 		.then(function (response) {
 		
+	
 		console.log(response);
+		$('#okcreatedemployed').modal('show')
 	
 		
 		})
 		
 		.catch(function (error) {
 		console.log(error);
+		console.log(error.response);
+
 		});
 			
 	}
