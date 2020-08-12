@@ -386,8 +386,6 @@
 		
 		
 		for (var i = 0; i < size; i++) {
-
-				console.log(responsedata.data[i]);
 				
 				console.log('hola')
 	
@@ -412,7 +410,7 @@
 				cell4.innerHTML = responsedata.data[i].description;
 				cell5.innerHTML = responsedata.data[i].state.name;
 				
-				cellInstruction.innerHTML = '<button class="btn btn-primary btn-xs my-xs-btn" type="button" onClick="windows.location.href=\'report.html?meeting_id='+responsedata.data[i].id+'\'&report_id" >'
+				cellInstruction.innerHTML = '<button class="btn btn-primary btn-xs my-xs-btn" type="button" onClick="window.location.href= \'report.html?meeting_id='+responsedata.data[i].id+'&report_id='+responsedata.data[i].report[0]+'\'" >'
    				 + '<span class="glyphicon glyphicon-pencil"></span> Ver reporte</button>';
 				
 				}
@@ -439,13 +437,72 @@
 		
 	}
 
+	function setReportData(){
+		loaddata();
+		var meeting = getUrlParameter("meeting_id");
+		var report = getUrlParameter("report_id");
+		if (report != null & meeting != null){
+			$('#meeting').val(meeting);
+			getReportInfo(meeting, report);
+		}else{
+			window.location.href = "index.html"
+		}
+	}
+
+	function getReportInfo(meetingId, reportID){
+		
+		var globalresponse=null;
+		
+		var getreporturl= 'http://itsecurityassistantapi-dev.us-east-1.elasticbeanstalk.com/api/Customers/'+actualuserid+'/Meetings/'+meetingId+'/Report/'+reportID+'/';
+		
+		
+		var sendtoken='Bearer '+window.localStorage.getItem('accesstoken') ;
+		
+		axios.get(getreporturl, {
+			headers: {
+				'Authorization': sendtoken
+			}
+		})
+		
+		.then(function (response) {
+			let report = response.data;
+			console.log(report);
+			$('#price').text(report.price);
+			$('#diagnostic').text(report.diagnostic);
+			$('#solution').text(report.solution);
+			$('#cve_codes').text(report.cve_codes);
+			$('#price').text(report.text);
+			for (i in report.attacks){
+				$("#attacks").append(
+					'<div class="col-6 form-group form-check">\
+						<li class="form-check-label">'+report.attacks[i].name+'</li>\
+			  		</div>');
+				report.attacks[i].name;
+			}
+		})
+		
+		.catch(function (error) {
+		console.log(error);
+		});
+		
+		
+		
+		
+	
+		var table = document.getElementById("tablemeets");
+		
+		var size=window.localStorage.getItem('datasize');
+		
+		
+	}
+
 	function setData(){
 		loaddataemployes();
 		var meeting = getUrlParameter("meeting_id");
 		var customer = getUrlParameter("customer_id");
 		if (meeting != null & customer != null){
 			$('#meeting').val(meeting);
-			getMeetingInfo(customer, meeting);
+			getMeetingReportInfo(customer, meeting);
 		}else{
 			window.location.href = "analystdashboard.html"
 		}
