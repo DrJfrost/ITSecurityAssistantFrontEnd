@@ -428,6 +428,8 @@ function createReport(){
 
 	function analyststart(){
 		loaddataemployes();
+		getpendignanalisis();
+
 
 	}
 	
@@ -721,18 +723,129 @@ function createReport(){
 		});
 
 
-
-
-
-
-
-
-
-
-
-
-
 	}
+
+
+	function getpendignanalisis(){
+		
+
+		
+
+		
+		var globalresponse=null;
+		
+		var getmeeturl= 'http://itsecurityassistantapi-dev.us-east-1.elasticbeanstalk.com/api/PendingAnalisis/';
+		
+		
+		var sendtoken='Bearer '+window.localStorage.getItem('accesstoken') ;
+		
+		axios.get(getmeeturl, {
+			headers: {
+			'Authorization': sendtoken
+		}
+		})
+		
+		.then(function (response) {
+			
+		window.localStorage.setItem('analistsize', response.data.length);
+		
+		
+		console.log(response);
+		
+		
+		
+	
+		tabledef3(response);
+		
+		
+		
+		})
+		
+		.catch(function (error) {
+		console.log(error);
+		});
+		
+		
+		
+		
+	
+		var table3 = document.getElementById("analistatable");
+		
+		var tablesize3=window.localStorage.getItem('analistsize');
+		
+		function tabledef3(object3){
+			
+		
+		var responsedata3=object3;
+		
+		
+		for (var i = 0; i < tablesize3; i++) {
+			
+			/*orden en la tabla
+			
+			auditor->auditor
+			id cliente->customer
+			fecha->date
+			description->description
+			id reunion->id
+			tipo reunion->meeting_class
+			clase reunion->meeting_type
+			precio->price
+			estado->state
+			
+			*/
+				
+		
+	
+				var row = table3.insertRow(i+1);
+				
+				var cell1 = row.insertCell(0);
+				var cell2 = row.insertCell(1);
+				var cell3 = row.insertCell(2);
+				var cell4 = row.insertCell(3);
+				var cell5 = row.insertCell(4);
+				var cell6 = row.insertCell(5);
+				var cell7 = row.insertCell(6);
+				var cell8 = row.insertCell(7);
+				var cell9 = row.insertCell(8);
+			
+				
+				cell1.innerHTML = responsedata3.data[i].auditor;
+				cell2.innerHTML = responsedata3.data[i].customer;
+				cell3.innerHTML = responsedata3.data[i].date;
+				cell4.innerHTML = responsedata3.data[i].description;
+				cell5.innerHTML = responsedata3.data[i].id;
+				cell6.innerHTML = responsedata3.data[i].meeting_class.name;
+				cell7.innerHTML = responsedata3.data[i].meeting_type.name;
+				cell8.innerHTML = responsedata3.data[i].price;
+				cell9.innerHTML = responsedata3.data[i].state.name;
+				
+				
+				var cellInstruction = row.insertCell(9);
+				cellInstruction.innerHTML = '<button class="btn btn-primary btn-xs my-xs-btn" type="button" onClick="Auditar('+responsedata3.data[i].id+')" >'
+				+ '<span class="glyphicon glyphicon-pencil"></span>Hacer reporte</button>';
+			
+			
+		
+		}
+		
+		console.log(tablesize3);
+
+		var rowtodelete=parseInt(tablesize3)+1;
+		
+		document.getElementById("analistatable").deleteRow(rowtodelete);
+		
+		
+		}
+		
+	}
+
+
+
+
+
+
+	
 		
 		
 		
